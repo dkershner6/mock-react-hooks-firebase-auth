@@ -26,11 +26,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update release tags for latest major and minor releases
-        uses: haya14busa/action-update-semver@v1
-        with:
-          tag: "v${{ steps.extract_version.outputs.version }}"
-
   publish-npm:
     needs: [create-release]
     runs-on: ubuntu-latest
