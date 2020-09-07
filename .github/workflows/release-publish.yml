@@ -19,10 +19,16 @@ jobs:
       - name: Extract version
         id: extract_version
         uses: Saionaro/extract-package-version@v1.0.6
-      - name: Tag commit with updated version if merging
-        uses: tvdias/github-tagger@v0.0.1
+      - name: Tag Commit
+        uses: richardsimko/update-tag@master
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: "v${{ steps.extract_version.outputs.version }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update release tags for latest major and minor releases
+        uses: haya14busa/action-update-semver@v1
+        with:
           tag: "v${{ steps.extract_version.outputs.version }}"
 
   publish-npm:
