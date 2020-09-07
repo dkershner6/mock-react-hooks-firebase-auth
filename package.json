@@ -1,6 +1,6 @@
 {
   "name": "mock-react-hooks-firebase-auth",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A template for easy creation of new NPM packages",
   "main": "dist/index.js",
   "source": "src/index.ts",
